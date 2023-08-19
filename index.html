@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Listings</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  nav {
+    background-color: #444;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+  }
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Real Estate Listings</h1>
+  </header>
+  <nav>
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">About Us</a>
+    <a href="#" class="nav-link">Contact</a>
+  </nav>
+  <div class="content" id="listingContainer">
+    <!-- Real estate listings will be dynamically added here -->
+  </div>
+  <script>
+    const listingContainer = document.getElementById('listingContainer');
+
+    // Example JSON data for listings
+    const listings = [
+      {
+        image: 'listing1.jpg',
+        title: 'Beautiful Family Home',
+        location: '1234 Elm Street',
+        price: '$500,000',
+        page: 'listing1.html' // This would be the actual page for the listing
+      },
+      {
+        image: 'listing2.jpg',
+        title: 'Luxury Condo',
+        location: '5678 Oak Avenue',
+        price: '$750,000',
+        page: 'listing2.html'
+      }
+      // Add more listings here
+    ];
+
+    // Dynamically create listing cards
+    listings.forEach(listing => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${listing.image}" alt="${listing.title}">
+        <h2>${listing.title}</h2>
+        <p>${listing.location}</p>
+        <p>${listing.price}</p>
+      `;
+      card.addEventListener('click', () => {
+        window.location.href = listing.page;
+      });
+      listingContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>
